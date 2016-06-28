@@ -47,52 +47,46 @@ Example:
       }
       .details {
         padding: 1em;
-        background-color: #eee;
-        background-image: url('img/nice_snow.png');
-        background-repeat: repeat;
       }
       .details h3 {
         font-size: 1.5em;
         margin: 0;
         padding: 0.33em 0;
       }
-      .details marked-element{
+      .details marked-element ::content p{
         line-height: 1.4em;
       }
     </style>
 
     <template>
         <div class="embed-container">
-            <iframe frameborder="0" allowfullscreen id="selectedVideo" src="[[selectedVideo.src]]"></iframe>
+            <iframe frameborder="0" allowfullscreen id="selectedVideo" src="[[src]]"></iframe>
         </div>
         <div class="details">
-            <h3>[[selectedVideo.title]]</h3>
-            <marked-element markdown="[[selectedVideo.description]]"></marked-element>
+            <h3>[[title]]</h3>
+            <marked-element markdown="[[description]]"></marked-element>
         </div>
     </template>
 
 </dom-module>
 
 <script>
-    /*
-      Is parsing the incoming JSON and replacing all ' with " correct?
-    */
     Polymer({
         is: 'epic-video-player',
 
         properties: {
-            selectedVideo: {
-              type: Object,
-              observer: '_parseData'
+            title: {
+              type: String,
+            },
+            description: {
+              type: String,
+            },
+            src: {
+              type: String,
             }
         },
 
         ready: function() {
-          this._parseData();
         },
-
-        _parseData: function() {
-          this.selectedVideo = JSON.parse(this.selectedVideo);
-        }
     })
 </script>
