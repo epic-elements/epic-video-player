@@ -10,6 +10,7 @@ subject to an additional IP rights grant found at http://polymer.github.io/PATEN
 -->
 <link rel="import" href="../polymer/polymer.html">
 <link rel="import" href="../marked-element/marked-element.html">
+<link rel="import" href="../epic-styles/epic-styles.html">
 
 <!--
 A responsive video player card that displays the embedded video as well as the video title and description.
@@ -21,7 +22,7 @@ Example:
 @demo
 -->
 <dom-module id="epic-video-player">
-    <style>
+    <style include="epic-styles">
       :host {
         display: block;
         width: 100%;
@@ -35,6 +36,7 @@ Example:
         padding-bottom: 56.25%;
         max-width: none;
         margin: 2em auto 0;
+        @apply(--epic-video-player-embed-container);
       }
       .embed-container embed,
       .embed-container iframe,
